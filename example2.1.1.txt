@@ -1,0 +1,30 @@
+>> a=pi+sqrt(5)
+
+a =
+
+    5.3777
+
+>> sa = sym('pi+sqrt(5)')
+ 
+sa =
+ 
+pi + 5^(1/2)
+ 
+>> Ca=class(a)
+
+Ca =
+
+double
+
+>> Csa=class(sa)
+
+Csa =
+
+sym
+
+>> vpa(sa-a)
+ 
+ans =
+ 
+0.000000000000000013822375841085200048593542564188
+ 
