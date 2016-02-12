@@ -1,6 +1,6 @@
 >> syms u v w z a5
 >> f=sym('3');
->> Eq=sin(f)*u*z^2+v*z+f*w-a5;
+>> Eq=sin(f)*u*z^2+v*z+f*w-a5;%construct a mathematical equation and solve it.
 >> symvar(Eq)
  
 ans =
@@ -25,7 +25,7 @@ result_1 =
  
 a5/3 - (v*z)/3 - (u*z^2*sin(3))/3
  
->> result_2=solve(Eq,z)
+>> result_2=solve(Eq,z) %treat different variables as free parameters
  
 result_2 =
  
