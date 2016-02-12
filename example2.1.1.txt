@@ -1,10 +1,10 @@
->> a=pi+sqrt(5)
+>> a=pi+sqrt(5)  %create a numerical constant
 
 a =
 
     5.3777
 
->> sa = sym('pi+sqrt(5)')
+>> sa = sym('pi+sqrt(5)') %create a symbolical constant
  
 sa =
  
@@ -22,7 +22,7 @@ Csa =
 
 sym
 
->> vpa(sa-a)
+>> vpa(sa-a) %differences between symbolical constant and numerical value due to the precision
  
 ans =
  
