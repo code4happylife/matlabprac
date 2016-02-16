@@ -32,4 +32,4 @@ end
 % x1,2,3,.. =   matrix, matrix of arbitrary size.
 %
 % a         =   scalar, only used when given with 1 matrix input argument.
-
+%对于矩阵求克罗内克积。矩阵的克罗内克积是简化矩阵的一个逆向思维。
