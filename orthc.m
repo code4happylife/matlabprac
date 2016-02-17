@@ -19,7 +19,7 @@ U=cell(1,totalsvd);
 S=cell(1,totalsvd);
 V=cell(1,totalsvd);
 
-[Ut St Vt]=svd(reshape(A,[n(1),prod(n(2:end))]));%对原来的张量进行reshape变换，求得对应的svd
+[Ut St Vt]=svd(reshape(A,[n(1),prod(n(2:end))]));%对原来的张量进行reshape变换，将张量展开成矩阵。求得对应的svd
 U{1}=Ut;
 S{1}=diag(St);
 V{1}=Vt;
