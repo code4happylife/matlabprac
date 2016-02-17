@@ -69,7 +69,10 @@ if nargin==2
 else
     tol= max(n)*eps(sigmas(1));%这里设置一个阈值，用来过滤那些很小的数据；
     %这个阈值决定了某个特征值是否可以视为0而简化矩阵的表示。
-
+    %The tensor train rank-1 decomposition exhibits
+    %a singular value pro?le as with the SVD, 
+    %allowing for a low-rank truncated series whenever the
+    %singular value decay is prominent.
 end
 
 counter=1;
