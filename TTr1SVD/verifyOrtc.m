@@ -11,13 +11,7 @@ function ocv=verifyOrtc(A,O)
 %
 % O         =   cell, orthogonal tensors computed with orthc.m.
 %
-% Reference
-% ---------
-%
-% A Constructive Algorithm for Decomposing a Tensor into a Finite Sum of Orthonormal Rank-1 Terms
-% http://arxiv.org/abs/1407.1593
-%
-% 2015, Kim Batselier, Haotian Liu, Ngai Wong
+
 
 [d,R]=size(O);
 ocv=zeros(1,R);
