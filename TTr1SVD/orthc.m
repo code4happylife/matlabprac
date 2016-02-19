@@ -15,13 +15,7 @@ A(:,:,2)=[ 13 16 19 22; 14 17 20 23; 15 18 21 24];
 % tol       =   scalar, optional tolerance to decide whether computed singular
 %               values are numerically zero. Default value = max(size(A))*eps(sigmas(1)).
 %
-% Reference
-% ---------
-%
-% A Constructive Algorithm for Decomposing a Tensor into a Finite Sum of Orthonormal Rank-1 Terms
-% http://arxiv.org/abs/1407.1593
-%
-% 2015, Kim Batselier, Haotian Liu, Ngai Wong
+
 
 n=size(A);
 r=zeros(1,length(n)-1);
@@ -131,3 +125,11 @@ for i=1:svdsperlevel(end)
 end
 
 end
+%From the lines of codes,the project itself should not be so difficult to
+%understand.However,I spend such a long time in dealing with the codes and
+%still can not control the core thinking behind the codes.For example,I
+%really do not get the core about the procedures here for so many loops and
+%iterations for the colunms and rows and why.What makes me happy is that
+%the problems in the article can finally be solved within just a few
+%hundreds of matlab codes which is fascinating and amazing.Just do some
+%cool things with high order matrix.
