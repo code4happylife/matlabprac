@@ -12,7 +12,7 @@ function [S,Q,R,I,Ut,j]=ttr12tucker(U,sigmas,V,n)
 %               kth mode outer product vectors, 
 %
 % U         =   cell, contains the U vectors of each of the SVDs in the
-%               TTr1 tree,
+%               TTr1 tree,张量的n模展开矩阵进行SVD分解得到的左矩阵
 %
 % sigmas    =   vector, contains the final singular values in the linear
 %               combination of rank-1 terms.
@@ -21,14 +21,7 @@ function [S,Q,R,I,Ut,j]=ttr12tucker(U,sigmas,V,n)
 %               TTr1 tree,
 %
 % n         =   vector, size of the original tensor A.
-%
-% Reference
-% ---------
-%
-% A Constructive Algorithm for Decomposing a Tensor into a Finite Sum of Orthonormal Rank-1 Terms
-% http://arxiv.org/abs/1407.1593
-%
-% 2015, Kim Batselier, Haotian Liu, Ngai Wong
+
 
 d=length(n);
 indices=leave2ind(find(sigmas),n); % only handle nonzero sigmas
