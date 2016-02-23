@@ -11,11 +11,7 @@ function y=mkron(varargin)
 % x1,2,3,.. =   matrix, matrix of arbitrary size.
 %
 % a         =   scalar, only used when given with 1 matrix input argument.
-%
-% Reference
-% ---------
-%
-% 08/2014, Kim Batselier
+
 
 n=length(varargin);
 
@@ -25,12 +21,12 @@ end
 
 % check whether second argument is a scalar, if so, then repeatedly apply
 % kronecker product onto first argument
-if isscalar(varargin{2})
-    n=varargin{2};
-    y=varargin{1};
+if isscalar(varargin{2})%当参数为[1,1]的标量时，isscalar返回逻辑1（true），否则返回逻辑0（false）
+    n=varargin{2};%varargin is a MATLAB function;It is an input variable in a function definition statement
+    y=varargin{1};%that allows the function to accept any number of input arguments.
     for i=2:n
-        y=kron(y,varargin{1});
-    end    
+        y=kron(y,varargin{1});%kron -Kronecker tensor product.
+    end                       %This MATLAB function returns the Kronecker tensor product of X and Y.
 else
     y=varargin{1};
     for i=2:n
