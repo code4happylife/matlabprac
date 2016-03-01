@@ -83,6 +83,7 @@ S(abs(S)<tol)=0;
 S=reshape(S,r);
 end
 
+
 % i=3;                 i=2; j=(2:4)%j依次等于2,3,4进行遍历I={1，2};{3，4};{5，6}
 % 2*(i-2)+1 = 3;        2*(i-2)+1 = 1;      %内层循环针对j，j=3,I={3,4}
 % 2*(i-2)+2 = 4;        2*(i-2)+2 = 2;
@@ -128,8 +129,10 @@ end
 %     % distribute the R vectors in a new R cell according to the indices
 %     %% in order for the summation over the nonzero sigmas to be correct
 %     temp=R{i};%每次循环将R{1}R{2}R{3}备份到temp临时变量中
-%     R{i}=zeros(size(temp,1),length(nonzerosigmas));%对R{1}R{2}R{3}进行初始化操作；R{1}R{2}R{3}依次是(3*6)(4*6)(2*6)的矩阵
-%     if i==d                                        %i=3,最后执行，
+%     R{i}=zeros(size(temp,1),length(nonzerosigmas));%对新的R{1}R{2}R{3}进行初始化操作；R{1}R{2}R{3}依次是(3*6)(4*6)(2*6)的矩阵
+%     if i==d                                        %i=3,最后执行，将整个Ut{3}QR分解之后的结果的R{3}放到R{3}里面
+%     	%%-1	1.11022302462516e-16	-0.243845979509937	0.969813970963937	0.0238799428886511	-0.999714833503852
+%         %%  0	1	-0.969813970963937	-0.243845979509937	0.999714833503852	0.0238799428886510
 %         counter=1;
 %         Rveccounter=1;
 %         while counter<=size(indices,1)
@@ -150,3 +153,29 @@ end
 %     end
 % end
 % 
+% 
+% 
+% % construct the core tensor
+% S=zeros(prod(r),1);%以叶子节点的个数为行，构建一个列向量
+% for k=1:length(nonzerosigmas)
+%     temp=nonzerosigmas(k)*kron(R{d}(:,k),R{d-1}(:,k));%temp=nonzerosigmas(1)*kron(R{3}(:,1),R{2}(:,1)) nonzerosigmas(2)*kron(R{3}(:,2),R{2}(:,2))
+%     for i=d-2:-1:1%这里d-2是因为已经计算了两个维度，或者说是
+%         temp=kron(temp,R{i}(:,k));  %kron(temp,R{1}(:,1))  这里构造的是一个与原来的张量元素的个数相同的一个列向量kron(temp,R{2}(:,2))
+%     end
+%     S=S+temp;    
+% end
+% 
+% 
+% 
+% tol=max(n)*eps(max(nonzerosigmas));%构造一个阈值，当S的元素小于这个阈值的时候，可以将这个元素默认为0
+% S(abs(S)<tol)=0;
+% S=reshape(S,r);
+% 
+% In multilinear algebra, there does not exist a general decomposition method for multi-way arrays (also known as N-arrays, higher-order arrays, or data-tensors) with all the properties of a matrix singular value decomposition (SVD). A matrix SVD simultaneously computes
+% (a) a rank-R decomposition and
+% (b) the orthonormal row/column matrices.
+% These two properties can be captured separately by two different decompositions for multi-way arrays.
+% Property (a) is extended to higher order by a class of closely related constructions known collectively as CP decomposition (named after the two most popular and general variants, CANDECOMP and PARAFAC). Such decompositions represent a tensor as the sum of the n-fold outer products of rank-1 tensors, where n is the dimension of the tensor indices.
+% Property (b) is extended to higher order by a class of methods known variably as Tucker3, N-mode SVD, and N-mode principal component analysis (PCA). (This article will use the general term "Tucker decomposition".) These methods compute the orthonormal spaces associated with the different axes (or modes) of a tensor. The Tucker decomposition is also used in multilinear subspace learning as multilinear principal component analysis. This terminology was coined by P. Kroonenberg in the 1980s, but it was later called multilinear SVD and HOSVD (higher-order SVD) by L. De Lathauwer.
+% Historically, much of the interest in higher-order SVDs was driven by the need to analyze empirical data, especially in psychometrics and chemometrics. As such, many of the methods have been independently invented several times, often with subtle variations, leading to a confusing literature. Abstract and general mathematical theorems are rare (though see Kruskal[1] with regard to the CP decomposition); instead, the methods are often designed for analyzing specific data types. The 2008 review article by Kolda and Bader[2] provides a compact summary of the history of these decompositions, and many references for further reading.
+% The concept of HOSVD was carried over to functions by Baranyi and Yam via the TP model transformation [3] .[4] This extension led to the definition of the HOSVD based canonical form of tensor product functions and Linear Parameter Varying system models [5] and to convex hull manipulation based control optimization theory, see TP model transformation in control theories.
