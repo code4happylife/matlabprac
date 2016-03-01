@@ -171,11 +171,37 @@ end
 % S(abs(S)<tol)=0;
 % S=reshape(S,r);
 % 
-% In multilinear algebra, there does not exist a general decomposition method for multi-way arrays (also known as N-arrays, higher-order arrays, or data-tensors) with all the properties of a matrix singular value decomposition (SVD). A matrix SVD simultaneously computes
-% (a) a rank-R decomposition and
-% (b) the orthonormal row/column matrices.
-% These two properties can be captured separately by two different decompositions for multi-way arrays.
-% Property (a) is extended to higher order by a class of closely related constructions known collectively as CP decomposition (named after the two most popular and general variants, CANDECOMP and PARAFAC). Such decompositions represent a tensor as the sum of the n-fold outer products of rank-1 tensors, where n is the dimension of the tensor indices.
-% Property (b) is extended to higher order by a class of methods known variably as Tucker3, N-mode SVD, and N-mode principal component analysis (PCA). (This article will use the general term "Tucker decomposition".) These methods compute the orthonormal spaces associated with the different axes (or modes) of a tensor. The Tucker decomposition is also used in multilinear subspace learning as multilinear principal component analysis. This terminology was coined by P. Kroonenberg in the 1980s, but it was later called multilinear SVD and HOSVD (higher-order SVD) by L. De Lathauwer.
-% Historically, much of the interest in higher-order SVDs was driven by the need to analyze empirical data, especially in psychometrics and chemometrics. As such, many of the methods have been independently invented several times, often with subtle variations, leading to a confusing literature. Abstract and general mathematical theorems are rare (though see Kruskal[1] with regard to the CP decomposition); instead, the methods are often designed for analyzing specific data types. The 2008 review article by Kolda and Bader[2] provides a compact summary of the history of these decompositions, and many references for further reading.
-% The concept of HOSVD was carried over to functions by Baranyi and Yam via the TP model transformation [3] .[4] This extension led to the definition of the HOSVD based canonical form of tensor product functions and Linear Parameter Varying system models [5] and to convex hull manipulation based control optimization theory, see TP model transformation in control theories.
+% In multilinear algebra, there does not exist a general decomposition
+% method for multi-way arrays (also known as N-arrays, higher-order arrays,
+% or data-tensors) with all the properties of a matrix singular value
+% decomposition (SVD). A matrix SVD simultaneously computes (a) a rank-R
+% decomposition and (b) the orthonormal row/column matrices. These two
+% properties can be captured separately by two different decompositions for
+% multi-way arrays. Property (a) is extended to higher order by a class of
+% closely related constructions known collectively as CP decomposition
+% (named after the two most popular and general variants, CANDECOMP and
+% PARAFAC). Such decompositions represent a tensor as the sum of the n-fold
+% outer products of rank-1 tensors, where n is the dimension of the tensor
+% indices. Property (b) is extended to higher order by a class of methods
+% known variably as Tucker3, N-mode SVD, and N-mode principal component
+% analysis (PCA). (This article will use the general term "Tucker
+% decomposition".) These methods compute the orthonormal spaces associated
+% with the different axes (or modes) of a tensor. The Tucker decomposition
+% is also used in multilinear subspace learning as multilinear principal
+% component analysis. This terminology was coined by P. Kroonenberg in the
+% 1980s, but it was later called multilinear SVD and HOSVD (higher-order
+% SVD) by L. De Lathauwer. Historically, much of the interest in
+% higher-order SVDs was driven by the need to analyze empirical data,
+% especially in psychometrics and chemometrics. As such, many of the
+% methods have been independently invented several times, often with subtle
+% variations, leading to a confusing literature. Abstract and general
+% mathematical theorems are rare (though see Kruskal[1] with regard to the
+% CP decomposition); instead, the methods are often designed for analyzing
+% specific data types. The 2008 review article by Kolda and Bader[2]
+% provides a compact summary of the history of these decompositions, and
+% many references for further reading. The concept of HOSVD was carried
+% over to functions by Baranyi and Yam via the TP model transformation [3]
+% .[4] This extension led to the definition of the HOSVD based canonical
+% form of tensor product functions and Linear Parameter Varying system
+% models [5] and to convex hull manipulation based control optimization
+% theory, see TP model transformation in control theories.
