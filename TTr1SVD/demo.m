@@ -4,9 +4,14 @@ clear all;
 clc;
 
 % example tensor by "A Constructive Algorithm for Decomposing a Tensor into a Finite Sum of Orthonormal Rank-1 Terms"
-A(:,:,1)=[1 4 7 10;2 5 8 11;3 6 9 12];
-A(:,:,2)=[ 13 16 19 22; 14 17 20 23; 15 18 21 24];
+B=round(64*rand(8))
+% A(:,:,1)=[1 4 7 10;2 5 8 11;3 6 9 12];
+% A(:,:,2)=[ 13 16 19 22; 14 17 20 23; 15 18 21 24];
+A=reshape(B,4,4,2,2);
 
+% A(:,:,1)=[1 4 7 10;2 5 8 11;3 6 9 12];
+% A(:,:,2)=[ 13 16 19 22; 14 17 20 23; 15 18 21 24];
+% A(:,:,3)=[15 16 17 18;4 7 7 9;8 7 2 9];
 % store dimensions of A in n,which is [3 4 2]
 n=size(A);
 
@@ -31,7 +36,8 @@ norm(Q{3}'* Q{3}-eye(2),'fro')
 Atilde=getAtilde(U,sigmas(1:2),V,1:2,n);
 
 % compare our approximation error with bound from singular
-% values;根据奇异值，估计误差
+% values;根据奇异值，估计误差。将一个矩阵分解成克罗内克积-特征值的和的形式，
+%此时特征值可以用来判断误差。
 [norm(reshape(A-Atilde,[1 prod(n)])) norm(sigmas(3:end))]
 
 % convert the rank-2 approximation to the Tucker (HOSVD) format
