@@ -19,14 +19,7 @@ function [U,S,V,sigmas]=ttr1svd(A)
 %
 % sigmas    =   vector, contains the final singular values in the linear
 %               combination of rank-1 terms.
-%
-% Reference
-% ---------
-%
-% A Constructive Algorithm for Decomposing a Tensor into a Finite Sum of Orthonormal Rank-1 Terms
-% http://arxiv.org/abs/1407.1593
-%
-% 2014-2015: Kim Batselier, Haotian Liu, Ngai Wong
+
 
 n=size(A);
 r=zeros(1,length(n)-1);

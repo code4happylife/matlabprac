@@ -22,14 +22,6 @@ function [U,S,V,sigmas]=ttr1svds(A,R)
 % A         =   array, d-way array,
 %
 % R         =   scalar, desired number of terms.
-%
-% Reference
-% ---------
-%
-% A Constructive Algorithm for Decomposing a Tensor into a Finite Sum of Orthonormal Rank-1 Terms
-% http://arxiv.org/abs/1407.1593
-%
-% 2014, Kim Batselier, Haotian Liu, Ngai Wong
 n=size(A);
 r=zeros(1,length(n)-1);
 for i=1:length(n)-1
