@@ -101,3 +101,5 @@ while 1
     svd(E+eps*randn(5,5) .*E)
     pause(.25)
 end
+A=gallery(3)
+[T,B]=schur(A)
