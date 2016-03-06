@@ -63,17 +63,24 @@ sigmas
 % A(:)'*nullspace2(:)
 
 % demonstrate use of leave2ind.m to determine which U,V vectors we need to reconstruct leaves
-indices=leave2ind([1],n)
+indices=leave2ind([1,3,5,7,9],n)
 
 % odd columns of indices contain cell indices i of U{i},V{i},
 % even columns of indices contain column indices j of U{i}(:,j),V{i}(:,j)
 
 % reconstruct the first, 3rd and 4th leaf
-firstTerm=sigmas(1)*mkron(V{6}(:,1),U{6}(:,1),V{2}(:,1),U{2}(:,1),U{1}(:,1));
-
+firstTerm=sigmas(1)*mkron(V{6}(:,1),U{6}(:,1),U{2}(:,1),U{1}(:,1));
+thirdTerm=sigmas(3)*mkron(V{7}(:,1),U{7}(:,1),U{2}(:,2),U{1}(:,1));
+fifthTerm=sigmas(5)*mkron(V{8}(:,1),U{8}(:,1),U{2}(:,3),U{1}(:,1));
+seventhTerm=sigmas(7)*mkron(V{9}(:,1),U{9}(:,1),U{2}(:,4),U{1}(:,1));
+ninthTerm=sigmas(9)*mkron(V{10}(:,1),U{10}(:,1),U{3}(:,1),U{1}(:,2));
+total=firstTerm+thirdTerm+fifthTerm+seventhTerm+ninthTerm;
 % thirdTerm=sigmas(3)*mkron(V{indices(2,1)}(:,indices(2,2)),U{indices(2,1)}(:,indices(2,2)),U{indices(2,3)}(:,indices(2,4)));
 % fourthTerm=sigmas(4)*mkron(V{indices(3,1)}(:,indices(3,2)),U{indices(3,1)}(:,indices(3,2)),U{indices(3,3)}(:,indices(3,4)));
- s1=reshape(mkron(V1(:,1),U1(:,1),U(:,1)), 2, 3, 4)*sigma(1);
+TT=reshape(total,4,4,2,2);
+%  s1=reshape(mkron(V1(:,1),U1(:,1),U(:,1)), 2, 3, 4)*sigma(1);
 % compare to getAtilde
 % Atilde3=getAtilde(U,sigmas([1 3 4]),V,[1 3 4],n);
 % norm(firstTerm+thirdTerm+fourthTerm-Atilde3(:))
+error=abs(norm(A(:)-TT(:)))/norm(A(:))
+varerror=(sigmas(1)+sigmas(3)+sigmas(5)+sigmas(7)+sigmas(9))/sum(sigmas(1:32))
