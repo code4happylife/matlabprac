@@ -17,13 +17,13 @@ for i=2:d
 end
 
 %last endI points to last SVD of previous level       
-endI=endI(1:end-2); 
+endI=endI(1:end-2); %endI的长度比实际的维度少2；需要遍历的树的每一层的最大的svd索引
 
 % k(i) containst the offset of the ith term with respect to endI for
 % level d-i, initalize to sigmaI
-k=sigmaI;
+k=sigmaI;%sigmaI记录的是所有非零的叶子节点所对应的索引
 % l tells us which element of S{k(i)}(:,l(i)) we need to choose
-l=zeros(1,length(sigmaI));
+l=zeros(1,length(sigmaI));%k,l和S的关系密切
 
 indices=zeros(length(sigmaI),2*(length(n)-1));
 

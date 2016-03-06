@@ -17,11 +17,7 @@ function Uhat=UV2Uhat(U,V,I,n,varargin)
 % n2        =   vector, dimensions of the original tensor in case n is the
 %               dimension of the tensor corresponding with a reduced TTr1
 %               tree.
-%
-% Reference
-% ---------
-%
-% 08/2014, Kim Batselier
+
 
 indices=leave2ind(I,n);
 d=length(n);

@@ -18,13 +18,7 @@ function [B,sigmas]=tkpsvd(A,n,varargin)
 %
 % R         =   scalar, desired number of terms when calling the sparse
 %               version of TTR1SVD.
-%
-% Reference
-% ---------
-%
-% A constructive arbitrary-degree Kronecker product decomposition of matrices
-%
-% 2015, Kim Batselier, Ngai Wong
+
 
 % n contains the dimensions of the even order tensor n = [n1 n2 n3 ... nd]
 d=length(n);
@@ -59,7 +53,7 @@ else
     [U,S,V,sigmas]=ttr1svdz(A);
 end
 
-% heuristic tolerance to remove numerically zero sigmas
+% heuristic tolerance to remove numerically zero sigmas启发式的阈值设定，移除小的sigmas值
 tol=prod(n2)*eps(sigmas(1));
 I=find(sigmas>tol);
 sigmas(sigmas<tol)=[];
